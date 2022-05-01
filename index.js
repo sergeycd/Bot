@@ -1,39 +1,10 @@
 const TelegramApi = require('node-telegram-bot-api');
-
+const { gameOptions, againgameOptions } = require('./options');
 const token = '5306594314:AAFgN-fNrr0tf1zKY_5kLLArRZ-ELDG2qBI';
 
 const bot = new TelegramApi(token, { polling: true });
 //  бд
 const chat = {};
-
-const gameOptions = {
-  reply_markup: JSON.stringify({
-    inline_keyboard: [
-      [
-        { text: '1', callback_data: '1' },
-        { text: '2', callback_data: '2' },
-        { text: '3', callback_data: '3' },
-      ],
-      [
-        { text: '4', callback_data: '4' },
-        { text: '5', callback_data: '5' },
-        { text: '6', callback_data: '6' },
-      ],
-      [
-        { text: '7', callback_data: '7' },
-        { text: '8', callback_data: '8' },
-        { text: '9', callback_data: '9' },
-      ],
-      [{ text: '0', callback_data: '0' }],
-    ],
-  }),
-};
-
-const againgameOptions = {
-  reply_markup: JSON.stringify({
-    inline_keyboard: [[{ text: 'Играть еще раз', callback_data: '/again' }]],
-  }),
-};
 
 const startGame = async (chatid) => {
   await bot.sendMessage(
